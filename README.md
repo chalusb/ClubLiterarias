@@ -1,54 +1,38 @@
 # Literarias — club de lectura
 
-Sitio del club de lectura Literarias (Chihuahua, Chih., desde 2022). Construido con
-[Astro](https://astro.build) + Tailwind CSS v4: 100% estático, sin frameworks pesados,
-listo para Cloudflare Pages.
+Esta rama (`main`, conectada al dominio `clubliterarias.com`) es **solo la
+pantalla de "Próximamente"**: fondo, logo real y el texto, nada más. El sitio
+completo vive en otras ramas de este mismo repo mientras se decide el diseño
+final con el cliente:
 
-La identidad visual (tipografía redondeada, colores por mes, estrellitas, líneas
-onduladas, fichas bibliográficas) está tomada del [Instagram del club](https://www.instagram.com/club.literarias).
+- [`editorial-design`](https://github.com/chalusb/ClubLiterarias/tree/editorial-design) —
+  la versión completa ya construida, con la identidad visual tomada del
+  [Instagram del club](https://www.instagram.com/club.literarias) (tipografía
+  redondeada, colores por mes, estrellitas, líneas onduladas, fichas
+  bibliográficas).
+- [`dualipa-redesign`](https://github.com/chalusb/ClubLiterarias/tree/dualipa-redesign) —
+  rediseño nuevo inspirado en [service95.com/book-club](https://www.service95.com/book-club)
+  (la referencia que dio el cliente), con el mismo contenido del club.
+
+Cloudflare Pages genera automáticamente una URL de preview para cada rama
+(`<rama>.clubliterarias.pages.dev` o similar) aunque solo `main` esté
+conectada al dominio — así se pueden revisar las otras dos sin afectar lo que
+ve el público.
+
+Construido con [Astro](https://astro.build) + Tailwind CSS v4: 100% estático,
+sin frameworks pesados, listo para Cloudflare Pages.
 
 ## Estructura
 
 ```
 src/
-├── data/lecturas.ts       # Contenido: lectura del mes + archivo de lecturas anteriores
-├── components/            # Header, Hero, PastReads, About, Join, Footer, etc.
-├── layouts/Layout.astro   # <head>, fuentes, script de scroll-reveal y contadores
-└── pages/index.astro      # Ensambla la página
+├── components/Logo.astro   # El único componente que usa esta rama
+├── layouts/Layout.astro    # <head>, SEO, fuentes
+└── pages/index.astro       # La pantalla de "Próximamente"
 ```
 
-### Actualizar el libro del mes
-
-Edita `src/data/lecturas.ts`:
-
-1. Quita `destacado: true` del mes actual y agrégalo al mes nuevo (o simplemente
-   agrega una entrada nueva con `destacado: true` y quítalo de la anterior).
-2. Llena autora, páginas, género, editorial, cita, veredicto (1–5) y lugar de reunión.
-3. Los colores disponibles son: `plum`, `orange`, `olive`, `teal`, `navy`, `coral`.
-
-> Nota: varias citas y notas de meses anteriores vienen del texto (OCR) de las
-> publicaciones de Instagram y se limpiaron a mano donde estaba borroso o
-> ilegible. Vale la pena que alguien del club las revise contra el original
-> antes de darlas por definitivas.
->
-> Las portadas (`public/covers/{slug}.jpg`) se buscaron para que coincidan
-> con la edición exacta que se ve en cada publicación de Instagram (misma
-> editorial, mismo diseño de tapa) usando Open Library y las páginas de las
-> propias editoriales (Lumen, Alfaguara, Seix Barral, Libros del Asteroide,
-> El Acantilado, Impedimenta, Criatura Editora, Debolsillo). Coinciden 8 de
-> 9; la única que no se encontró fue la edición morada de Debolsillo de
-> "Penélope y las doce criadas" que aparece en su post de agosto — se dejó
-> la edición de Salamandra (misma novela, portada distinta) mientras alguien
-> del club no suba una foto de su propio ejemplar. Para reemplazar cualquier
-> portada, solo hay que sobrescribir el archivo con el mismo nombre de
-> `slug` en `public/covers/` — el componente `BookCover.astro` usa esa ruta
-> automáticamente y, si el archivo no existe, cae de vuelta al bloque de
-> color ilustrado.
->
-> El logo (`public/logo/literarias-logo*.png`) es un recorte real de una de
-> sus publicaciones de Instagram, no una tipografía. Si tienen el archivo
-> original del logo (Canva, Illustrator, etc.) en mejor resolución, mejor
-> reemplazar esos PNG por esa versión.
+Para editar el texto o el logo de esta pantalla, todo está en
+`src/pages/index.astro`.
 
 ## SEO
 
@@ -65,8 +49,9 @@ Ya incluido:
   cambian el logo o los colores de marca, hay que regenerar esta imagen a mano
   (es un JPG estático, no se genera solo).
 - **Datos estructurados (JSON-LD)**: `Organization` en el `<head>` (nombre,
-  logo, ciudad, Instagram) y `Book` en el Hero con los datos del libro del mes
-  — ayuda a que Google pueda mostrar info enriquecida en resultados de búsqueda.
+  logo, ciudad, Instagram) — ayuda a que Google entienda de qué se trata el
+  sitio. (La rama `editorial-design` además agrega `Book` con los datos del
+  libro del mes.)
 - **`sitemap-index.xml`** generado automático en cada build (`@astrojs/sitemap`)
   y **`robots.txt`** apuntando a él.
 - **`site.webmanifest`** + `apple-touch-icon.png` para que "Agregar a pantalla
