@@ -1,11 +1,20 @@
-# Literarias — club de lectura
+# Literarias — club de lectura (rediseño editorial)
 
-Sitio del club de lectura Literarias (Chihuahua, Chih., desde 2022). Construido con
-[Astro](https://astro.build) + Tailwind CSS v4: 100% estático, sin frameworks pesados,
-listo para Cloudflare Pages.
+Esta rama (`dualipa-redesign`) es un rediseño del sitio inspirado en la
+referencia que dio el cliente: [service95.com/book-club](https://www.service95.com/book-club)
+(el sitio de Dua Lipa). Mismo contenido real del club — mismos libros,
+portadas, cifras e Instagram — pero con un tratamiento visual editorial:
+tipografía serif (Fraunces) + sans neutra (Inter), fondo papel/tinta con un
+solo color de acento (ciruela), mucho espacio en blanco, sin las estrellitas
+ni líneas onduladas de la versión anterior.
 
-La identidad visual (tipografía redondeada, colores por mes, estrellitas, líneas
-onduladas, fichas bibliográficas) está tomada del [Instagram del club](https://www.instagram.com/club.literarias).
+La versión anterior (identidad tomada directo del [Instagram del club](https://www.instagram.com/club.literarias),
+más ilustrada y a color) vive en la rama `editorial-design` de este mismo
+repo. La rama `main` (conectada al dominio) solo tiene una pantalla de
+"Próximamente" mientras el cliente decide cuál de las dos direcciones usar.
+
+Construido con [Astro](https://astro.build) + Tailwind CSS v4: 100% estático,
+sin frameworks pesados, listo para Cloudflare Pages.
 
 ## Estructura
 

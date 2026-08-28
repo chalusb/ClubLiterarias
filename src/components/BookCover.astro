@@ -1,7 +1,7 @@
 ---
-// Si se pasa `slug`, se usa la portada real en public/covers/{slug}.jpg
-// (fuente: Open Library). Si no existe o no se pasa slug, cae al bloque
-// ilustrado por color como marcador visual.
+// Portada real en public/covers/{slug}.jpg. Si no existe, cae a una
+// ficha tipográfica limpia (sin ilustración) — consistente con el
+// tratamiento fotográfico y minimalista del resto del sitio.
 import type { Color } from '../data/lecturas';
 
 interface Props {
@@ -24,21 +24,7 @@ const bg: Record<Color, string> = {
 };
 ---
 
-<div
-  class:list={['relative aspect-[3/4.4] rounded-sm shadow-[0_18px_40px_-16px_rgba(42,33,24,0.45)] overflow-hidden flex flex-col justify-between p-4', className]}
-  style={{ backgroundColor: bg[color] }}
->
-  <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full opacity-90" aria-hidden="true">
-    <circle cx="50" cy="38" r="26" fill="rgba(245,236,219,0.16)" />
-    <path d="M0 78 C 25 60, 75 96, 100 70 L100 100 L0 100 Z" fill="rgba(42,33,24,0.18)" />
-  </svg>
-  <span class="relative font-mono-label text-[0.6rem] uppercase tracking-widest text-cream-soft/80">
-    {autora}
-  </span>
-  <p class="relative font-display text-cream-soft text-lg sm:text-xl leading-[1.05] text-balance drop-shadow-sm">
-    {titulo}
-  </p>
-
+<div class:list={['relative aspect-[3/4.4] overflow-hidden bg-paper-deep', className]}>
   {slug && (
     <img
       src={`/covers/${slug}.jpg`}
@@ -49,4 +35,15 @@ const bg: Record<Color, string> = {
       onerror="this.remove()"
     />
   )}
+  <div
+    class="absolute inset-0 flex flex-col justify-end p-4"
+    style={!slug ? { backgroundColor: bg[color] } : undefined}
+  >
+    {!slug && (
+      <>
+        <span class="font-body text-[0.65rem] uppercase tracking-widest text-paper/80">{autora}</span>
+        <p class="mt-1 font-display text-paper text-lg leading-[1.05] text-balance">{titulo}</p>
+      </>
+    )}
+  </div>
 </div>
