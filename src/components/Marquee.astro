@@ -2,22 +2,35 @@
 import { generos } from '../data/lecturas';
 
 const colors = ['var(--color-cream-soft)', 'var(--color-orange)'];
+
+// Una sola vuelta de géneros mide poco más de mil px. En monitores anchos
+// (ultrawide, 4K) eso es más angosto que la pantalla, así que el loop
+// -50% dejaba un hueco vacío justo antes de reiniciar. Repetimos la lista
+// varias veces por copia para que cada mitad del loop sea más ancha que
+// cualquier pantalla real, sin importar la resolución.
+const REPEATS = 6;
+const repeated = Array.from({ length: REPEATS }).flatMap(() => generos);
+const SECONDS_PER_PASS = 22;
+const duration = SECONDS_PER_PASS * REPEATS;
 ---
 
 <div
   class="marquee bg-navy py-4 overflow-hidden [@media(hover:hover)_and_(pointer:fine)]:hover:[animation-play-state:paused]"
   aria-hidden="true"
 >
-  <div class="marquee-track flex w-max items-center gap-8 font-display text-lg sm:text-xl uppercase tracking-wide">
+  <div
+    class="marquee-track flex w-max items-center gap-8 font-display text-lg sm:text-xl uppercase tracking-wide"
+    style={`--marquee-duration: ${duration}s`}
+  >
     {Array.from({ length: 2 }).map((_, copy) => (
       <div class="flex items-center gap-8 shrink-0">
-        {generos.map((g, gi) => (
+        {repeated.map((g, gi) => (
           <span class="flex items-center gap-8 shrink-0">
             <span style={`color:${colors[0]}`}>{g}</span>
             <svg
               viewBox="0 0 24 24"
               class="star-twinkle w-4 h-4 shrink-0"
-              style={`color:${colors[1]}; animation-delay:${((copy * generos.length + gi) % 6) * 0.3}s`}
+              style={`color:${colors[1]}; animation-delay:${((copy * repeated.length + gi) % 6) * 0.3}s`}
             >
               <path
                 fill="currentColor"

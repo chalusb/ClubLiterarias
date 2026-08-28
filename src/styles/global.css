@@ -227,7 +227,9 @@
     }
   }
   .marquee-track {
-    animation: marquee-scroll 26s linear infinite;
+    /* --marquee-duration la calcula el componente según cuánto texto haya. */
+    animation: marquee-scroll linear infinite;
+    animation-duration: var(--marquee-duration, 26s);
   }
 
   /* Las estrellitas separadoras destellan en su lugar; el texto se queda
