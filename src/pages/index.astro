@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import PastReads from '../components/PastReads.astro';
+import About from '../components/About.astro';
+import Join from '../components/Join.astro';
+import Footer from '../components/Footer.astro';
+import Wave from '../components/Wave.astro';
+---
+
+<Layout>
+  <div id="top">
+    <Header />
+    <main>
+      <Hero />
+      <Wave from="var(--color-cream)" to="var(--color-navy)" />
+      <Marquee />
+      <Wave from="var(--color-navy)" to="var(--color-cream-deep)" />
+      <PastReads />
+      <Wave from="var(--color-cream-deep)" to="var(--color-cream)" />
+      <About />
+      <Wave from="var(--color-cream)" to="var(--color-navy)" />
+      <Join />
+    </main>
+    <Footer />
+  </div>
+</Layout>

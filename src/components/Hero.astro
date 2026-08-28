@@ -1,0 +1,95 @@
+---
+import Logo from './Logo.astro';
+import Squiggle from './Squiggle.astro';
+import StarRating from './StarRating.astro';
+import BookCover from './BookCover.astro';
+import { lecturaDelMes } from '../data/lecturas';
+
+const l = lecturaDelMes;
+
+const bookJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: l.titulo,
+  author: { '@type': 'Person', name: l.autora },
+  numberOfPages: l.paginas,
+  genre: l.genero,
+  publisher: l.editorial,
+  ...(l.sinopsis && { abstract: l.sinopsis }),
+  ...(l.veredicto && {
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: l.veredicto,
+      bestRating: 5,
+      worstRating: 1,
+      ratingCount: 1,
+    },
+  }),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(bookJsonLd)} is:inline />
+
+<section id="lectura-del-mes" class="relative pt-14 pb-24 sm:pt-20 sm:pb-32 overflow-hidden">
+  <svg viewBox="0 0 24 24" class="hero-star animate-float-a absolute top-24 left-[6%] w-6 h-6 text-teal/70 hidden sm:block" aria-hidden="true">
+    <path fill="currentColor" d="M12 0l1.8 7.6L20 4.4l-4.4 6.2L23 12l-7.4 1.4L20 19.6l-6.2-3.6L12 24l-1.8-7.6L4 19.6l4.4-6.2L1 12l7.4-1.4L4 4.4l6.2 3.6z" />
+  </svg>
+  <svg viewBox="0 0 24 24" class="hero-star animate-float-b absolute top-10 right-[10%] w-4 h-4 text-orange/70 hidden sm:block" aria-hidden="true">
+    <path fill="currentColor" d="M12 0l1.8 7.6L20 4.4l-4.4 6.2L23 12l-7.4 1.4L20 19.6l-6.2-3.6L12 24l-1.8-7.6L4 19.6l4.4-6.2L1 12l7.4-1.4L4 4.4l6.2 3.6z" />
+  </svg>
+
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal pop-in">
+      <Logo class="h-11 sm:h-14" />
+      <p class="mt-3 font-mono-label text-[0.7rem] sm:text-xs uppercase tracking-[0.2em] text-ink/60">
+        Club de lectura · Diseño, ideas y buenas historias
+      </p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-16 items-center">
+      <div class="reveal" data-reveal-delay="80">
+        <div class="flex items-center gap-3">
+          <span class="font-mono-label text-xs uppercase tracking-widest text-plum">Lectura del mes</span>
+          <Squiggle color="var(--color-teal)" width={70} class="squiggle-draw" />
+        </div>
+
+        <p class="mt-3 font-display text-5xl sm:text-6xl uppercase text-navy leading-[0.92]">
+          {l.mes}
+        </p>
+
+        <h1 class="mt-5 font-display text-3xl sm:text-4xl text-ink leading-[1.05] text-balance">
+          {l.titulo}
+        </h1>
+        <p class="mt-2 text-lg text-ink/70">{l.autora}</p>
+
+        {l.sinopsis && <p class="mt-4 max-w-md text-ink/80 leading-relaxed">{l.sinopsis}</p>}
+
+        <div class="mt-6 flex items-center gap-4">
+          <StarRating value={l.veredicto} />
+          <span class="font-mono-label text-xs text-ink/50">{l.paginas} páginas · {l.editorial}</span>
+        </div>
+
+        <dl class="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 max-w-sm font-mono-label text-xs uppercase tracking-wide">
+          <div>
+            <dt class="text-ink/45">Género</dt>
+            <dd class="text-ink/80 normal-case font-body text-sm">{l.genero}</dd>
+          </div>
+          <div>
+            <dt class="text-ink/45">Subgénero</dt>
+            <dd class="text-ink/80 normal-case font-body text-sm">{l.subgenero}</dd>
+          </div>
+          <div>
+            <dt class="text-ink/45">Reunión</dt>
+            <dd class="text-ink/80 normal-case font-body text-sm">{l.lugar}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="reveal justify-self-center w-full max-w-xs" data-reveal-delay="160">
+        <div class="[@media(hover:hover)_and_(pointer:fine)]:hover:-rotate-1 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-transform duration-300 ease-out">
+          <BookCover titulo={l.titulo} autora={l.autora} color={l.color} slug={l.slug} class="w-full" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

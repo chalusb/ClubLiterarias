@@ -1,0 +1,19 @@
+---
+// Wordmark real, recortado de una publicación de @club.literarias en Instagram
+// (public/logo/literarias-logo*.png), no una recreación tipográfica.
+interface Props {
+  class?: string;
+  variant?: 'light' | 'dark';
+}
+
+const { class: className = '', variant = 'light' } = Astro.props;
+const src = variant === 'dark' ? '/logo/literarias-logo-dark.png' : '/logo/literarias-logo.png';
+---
+
+<img
+  src={src}
+  width="358"
+  height="82"
+  alt="Literarias — club de lectura"
+  class:list={['w-auto select-none', className]}
+/>

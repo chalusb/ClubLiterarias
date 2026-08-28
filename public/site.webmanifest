@@ -1,0 +1,13 @@
+{
+  "name": "Literarias — Club de lectura",
+  "short_name": "Literarias",
+  "description": "Club de lectura en Chihuahua, Chih. Diseño, ideas y buenas historias.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5ecdb",
+  "theme_color": "#7c3f72",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

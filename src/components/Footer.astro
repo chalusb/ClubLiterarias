@@ -1,0 +1,36 @@
+---
+import Logo from './Logo.astro';
+import { club } from '../data/lecturas';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-navy py-10">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <Logo variant="dark" class="h-6" />
+    <p class="font-mono-label text-[0.65rem] uppercase tracking-wider text-cream-soft/50 text-center">
+      {club.ciudad} · Desde {club.fundacion} · © {year}
+    </p>
+    <a
+      href={club.instagram}
+      target="_blank"
+      rel="noreferrer"
+      class="font-mono-label text-[0.65rem] uppercase tracking-wider text-cream-soft/70 hover:text-orange transition-colors duration-150 ease-out"
+    >
+      @club.literarias
+    </a>
+  </div>
+</footer>
+
+<div class="bg-plum-deep py-3">
+  <p class="text-center font-mono-label text-[0.6rem] uppercase tracking-wider text-cream-soft/60">
+    Desarrollado por{' '}
+    <a
+      href="https://cssoftware.org"
+      target="_blank"
+      rel="noreferrer"
+      class="text-orange hover:text-cream-soft transition-colors duration-150 ease-out"
+    >
+      cssoftware.org
+    </a>
+  </p>
+</div>

@@ -1,0 +1,32 @@
+---
+import { generos } from '../data/lecturas';
+
+const colors = ['var(--color-cream-soft)', 'var(--color-orange)'];
+---
+
+<div
+  class="marquee bg-navy py-4 overflow-hidden [@media(hover:hover)_and_(pointer:fine)]:hover:[animation-play-state:paused]"
+  aria-hidden="true"
+>
+  <div class="marquee-track flex w-max items-center gap-8 font-display text-lg sm:text-xl uppercase tracking-wide">
+    {Array.from({ length: 2 }).map((_, copy) => (
+      <div class="flex items-center gap-8 shrink-0">
+        {generos.map((g, gi) => (
+          <span class="flex items-center gap-8 shrink-0">
+            <span style={`color:${colors[0]}`}>{g}</span>
+            <svg
+              viewBox="0 0 24 24"
+              class="star-twinkle w-4 h-4 shrink-0"
+              style={`color:${colors[1]}; animation-delay:${((copy * generos.length + gi) % 6) * 0.3}s`}
+            >
+              <path
+                fill="currentColor"
+                d="M12 0l1.8 7.6L20 4.4l-4.4 6.2L23 12l-7.4 1.4L20 19.6l-6.2-3.6L12 24l-1.8-7.6L4 19.6l4.4-6.2L1 12l7.4-1.4L4 4.4l6.2 3.6z"
+              />
+            </svg>
+          </span>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>

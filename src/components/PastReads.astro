@@ -1,0 +1,59 @@
+---
+import BookCover from './BookCover.astro';
+import StarRating from './StarRating.astro';
+import Squiggle from './Squiggle.astro';
+import { lecturasAnteriores } from '../data/lecturas';
+
+const tilts = ['-rotate-2', 'rotate-1', '-rotate-1', 'rotate-2', '-rotate-[1.5deg]', 'rotate-[1.5deg]'];
+---
+
+<section id="lecturas-anteriores" class="py-20 sm:py-28 bg-cream-deep">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal flex items-end justify-between gap-6 flex-wrap">
+      <div>
+        <span class="font-mono-label text-xs uppercase tracking-widest text-plum">Archivo</span>
+        <h2 class="mt-2 font-display text-3xl sm:text-4xl text-navy">Lecturas anteriores</h2>
+        <Squiggle color="var(--color-orange)" width={90} class="mt-3 squiggle-draw" />
+      </div>
+      <p class="max-w-xs text-sm text-ink/60">
+        Desliza para ver los libros que nos han hecho reunirnos, desde nuestro primer mes hasta hoy.
+      </p>
+    </div>
+
+    <div class="mt-10 -mx-5 sm:-mx-8 px-5 sm:px-8 flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 [scrollbar-width:thin]">
+      {lecturasAnteriores.map((l, i) => (
+        <div class="reveal snap-start shrink-0" data-reveal-delay={Math.min(i * 60, 300)}>
+          <article
+            class:list={[
+              'group w-64 sm:w-72 bg-cream-soft rounded-lg border border-ink/10 p-5 flex flex-col shadow-[0_10px_24px_-14px_rgba(42,33,24,0.35)] transition-transform duration-300 ease-out [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1.5 [@media(hover:hover)_and_(pointer:fine)]:hover:rotate-0',
+              tilts[i % tilts.length],
+            ]}
+            style={`--accent: var(--color-${l.color})`}
+          >
+            <div class="flex items-center justify-between font-mono-label text-[0.65rem] uppercase tracking-wider text-ink/45">
+              <span>{l.mes} {l.anio}</span>
+              <span style="color: var(--accent)">#{l.numero}</span>
+            </div>
+
+            <BookCover titulo={l.titulo} autora={l.autora} color={l.color} slug={l.slug} class="mt-3 w-full" />
+
+            <h3 class="mt-4 font-display text-lg leading-snug text-ink text-balance">{l.titulo}</h3>
+            <p class="text-sm text-ink/60">{l.autora}</p>
+
+            <div class="mt-3">
+              <StarRating value={l.veredicto} color="var(--accent)" />
+            </div>
+
+            {l.cita && (
+              <p class="mt-3 font-hand text-lg leading-tight text-ink/80 text-balance">“{l.cita}”</p>
+            )}
+
+            <p class="mt-auto pt-4 font-mono-label text-[0.65rem] uppercase tracking-wide text-ink/40">
+              {l.lugar}
+            </p>
+          </article>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

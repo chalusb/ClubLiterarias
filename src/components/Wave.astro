@@ -1,0 +1,22 @@
+---
+// Divisor ondulado entre secciones, al estilo de las líneas dibujadas a
+// mano del Instagram del club. `from` pinta todo el fondo del divisor;
+// `to` pinta la ola que se funde con la sección siguiente.
+interface Props {
+  from: string;
+  to: string;
+  class?: string;
+}
+
+const { from, to, class: className = '' } = Astro.props;
+---
+
+<div class:list={['w-full overflow-hidden leading-[0] select-none', className]} aria-hidden="true">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none" class="w-full h-8 sm:h-10 block">
+    <rect x="0" y="0" width="1200" height="40" fill={from} />
+    <path
+      d="M0 22c50-14 100-14 150 0s100 14 150 0 100-14 150 0 100 14 150 0 100-14 150 0 100 14 150 0 100-14 150 0 100 14 150 0v18H0Z"
+      fill={to}
+    />
+  </svg>
+</div>

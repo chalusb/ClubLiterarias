@@ -1,0 +1,26 @@
+---
+interface Props {
+  color?: string;
+  class?: string;
+  width?: number;
+}
+
+const { color = 'var(--color-teal)', class: className = '', width = 120 } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 120 12"
+  width={width}
+  height={(width / 120) * 12}
+  class:list={['block', className]}
+  style={{ color }}
+  aria-hidden="true"
+>
+  <path
+    d="M2 8c6-8 12-8 18 0s12 8 18 0 12-8 18 0 12 8 18 0 12-8 18 0 12 8 18 0"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+</svg>
