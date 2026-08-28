@@ -1,12 +1,25 @@
 # Literarias — club de lectura (rediseño editorial)
 
-Esta rama (`dualipa-redesign`) es un rediseño del sitio inspirado en la
-referencia que dio el cliente: [service95.com/book-club](https://www.service95.com/book-club)
+Esta rama (`dualipa-redesign`) copia el sistema visual real de la referencia
+que dio el cliente: [service95.com/book-club](https://www.service95.com/book-club)
 (el sitio de Dua Lipa). Mismo contenido real del club — mismos libros,
-portadas, cifras e Instagram — pero con un tratamiento visual editorial:
-tipografía serif (Fraunces) + sans neutra (Inter), fondo papel/tinta con un
-solo color de acento (ciruela), mucho espacio en blanco, sin las estrellitas
-ni líneas onduladas de la versión anterior.
+portadas, cifras e Instagram — con el estilo sacado directo del DOM/CSS de
+esa página (no a ojo):
+
+- Una sola tipografía: sans bold con tracking muy negativo (-2 a -4px) en
+  los títulos grandes, todo en mayúsculas donde corresponde.
+- Blanco y negro puros en toda la interfaz — nada de color en texto, nav o
+  botones. El único color viene de las fotos (portadas de los libros).
+- Header con logo centrado y una barra de navegación con borde punteado
+  arriba/abajo, como el masthead del sitio real.
+- Franjas negras de ancho completo (CTA, footer) con texto blanco bold.
+- Carrusel de lecturas anteriores con tarjetas angostas: portada + mes/año
+  centrado, sin tarjetas con fondo ni sombra.
+
+El primer intento de esta rama fue "inspirado" pero a ojo (serif + un color
+de acento) y no se pareció nada a la referencia — esta versión se corrigió
+extrayendo la tipografía, tamaños, tracking y colores reales de
+service95.com con las herramientas de desarrollador, no por impresión visual.
 
 La versión anterior (identidad tomada directo del [Instagram del club](https://www.instagram.com/club.literarias),
 más ilustrada y a color) vive en la rama `editorial-design` de este mismo

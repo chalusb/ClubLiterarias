@@ -1,20 +1,21 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  /* Service95/Dua Lipa no usa serif ni color de acento en la interfaz:
+     una sola sans bold con tracking muy apretado, y todo el color viene
+     de las fotos (portadas), nunca del texto/botones/fondo. */
+  --font-display: 'Archivo', ui-sans-serif, system-ui, sans-serif;
   --font-body: 'Archivo', ui-sans-serif, system-ui, sans-serif;
   --font-mono-label: 'Space Mono', ui-monospace, monospace;
 
-  /* Base editorial: papel + tinta, con un solo acento (ciruela) que
-     hace las veces del rojo de Dua Lipa/Service95. Los colores por mes
-     (plum/orange/olive/teal/navy/coral) se conservan para acentos
-     puntuales — estrellas, tags — pero ya no cargan el diseño. */
-  --color-paper: #faf9f5;
-  --color-paper-deep: #f1efe8;
-  --color-ink: #15130f;
-  --color-ink-soft: rgba(21, 19, 15, 0.6);
-  --color-line: rgba(21, 19, 15, 0.12);
+  --color-paper: #ffffff;
+  --color-paper-deep: #f9f9f9;
+  --color-ink: #000000;
+  --color-ink-soft: rgba(0, 0, 0, 0.55);
+  --color-line: rgba(0, 0, 0, 0.15);
 
+  /* Colores por libro: se usan solo dentro de la portada/ficha de cada
+     lectura (dato real de la publicación), nunca en la interfaz. */
   --color-plum: #7c3f72;
   --color-plum-deep: #5a2c53;
   --color-magenta: #a6408a;
@@ -56,6 +57,19 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Titulares al estilo Service95: negros, muy bold, tracking negativo. */
+  .headline {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  /* Línea punteada como en el masthead de service95.com. */
+  .rule-dashed {
+    border-color: var(--color-line);
+    border-style: dashed;
   }
 
   /* Revelado al hacer scroll: entra desde abajo con easing fuerte de salida. */

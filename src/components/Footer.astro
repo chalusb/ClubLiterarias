@@ -1,5 +1,4 @@
 ---
-import Logo from './Logo.astro';
 import { club } from '../data/lecturas';
 const year = new Date().getFullYear();
 
@@ -11,17 +10,17 @@ const links = [
 ];
 ---
 
-<footer class="bg-ink border-t border-paper/10 pt-16 pb-8">
+<footer class="bg-ink border-t border-paper/15 pt-16 pb-8">
   <div class="mx-auto max-w-6xl px-5 sm:px-8 grid sm:grid-cols-[1.2fr_1fr_1fr] gap-10 sm:gap-6">
     <div>
-      <Logo variant="dark" class="h-7" />
+      <p class="font-display headline text-2xl text-paper">LITERARIAS</p>
       <p class="mt-4 max-w-xs text-sm text-paper/60 leading-relaxed">
         Club de lectura fundado en {club.fundacion} en {club.ciudad}, México.
       </p>
     </div>
 
     <div>
-      <p class="font-mono-label text-[0.65rem] uppercase tracking-wide text-paper/40">Sitio</p>
+      <p class="font-display font-bold uppercase text-xs tracking-[-0.02em] text-paper/50">Sitio</p>
       <ul class="mt-4 flex flex-col gap-2.5">
         {links.map((link) => (
           <li>
@@ -34,7 +33,7 @@ const links = [
     </div>
 
     <div>
-      <p class="font-mono-label text-[0.65rem] uppercase tracking-wide text-paper/40">Redes</p>
+      <p class="font-display font-bold uppercase text-xs tracking-[-0.02em] text-paper/50">Redes</p>
       <ul class="mt-4 flex flex-col gap-2.5">
         <li>
           <a
@@ -50,7 +49,7 @@ const links = [
     </div>
   </div>
 
-  <div class="mx-auto max-w-6xl px-5 sm:px-8 mt-14 pt-6 border-t border-paper/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 mt-14 pt-6 border-t border-dashed border-paper/15 flex flex-col sm:flex-row items-center justify-between gap-3">
     <p class="font-mono-label text-[0.65rem] uppercase tracking-wider text-paper/40">
       {club.ciudad} · © {year}
     </p>

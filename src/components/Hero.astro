@@ -4,47 +4,69 @@ import StarRating from './StarRating.astro';
 import { lecturaDelMes } from '../data/lecturas';
 
 const l = lecturaDelMes;
+
+const bookJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: l.titulo,
+  author: { '@type': 'Person', name: l.autora },
+  numberOfPages: l.paginas,
+  genre: l.genero,
+  publisher: l.editorial,
+  ...(l.sinopsis && { abstract: l.sinopsis }),
+  ...(l.veredicto && {
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: l.veredicto,
+      bestRating: 5,
+      worstRating: 1,
+      ratingCount: 1,
+    },
+  }),
+};
 ---
 
-<section id="lectura-del-mes" class="pt-16 pb-20 sm:pt-24 sm:pb-28">
+<script type="application/ld+json" set:html={JSON.stringify(bookJsonLd)} is:inline />
+
+<section id="lectura-del-mes" class="pt-14 pb-20 sm:pt-20 sm:pb-28">
   <div class="mx-auto max-w-6xl px-5 sm:px-8 grid md:grid-cols-[1.05fr_0.95fr] gap-12 md:gap-20 items-center">
     <div class="reveal">
-      <p class="font-mono-label text-xs uppercase tracking-[0.25em] text-plum">
+      <p class="font-display font-bold uppercase text-sm tracking-[-0.02em]">
         Lectura del mes · {l.mes} {l.anio}
       </p>
 
-      <h1 class="mt-5 font-display text-4xl sm:text-6xl leading-[1.02] text-balance">
+      <h1 class="mt-5 font-display headline text-4xl sm:text-6xl text-balance">
         {l.titulo}
       </h1>
-      <p class="mt-4 font-display italic text-xl sm:text-2xl text-ink/70">{l.autora}</p>
+      <p class="mt-4 font-display font-bold text-xl sm:text-2xl">{l.autora}</p>
 
-      {l.sinopsis && <p class="mt-6 max-w-md text-ink/75 leading-relaxed">{l.sinopsis}</p>}
+      {l.sinopsis && <p class="mt-6 max-w-md text-ink-soft leading-relaxed">{l.sinopsis}</p>}
 
       <div class="mt-7 flex items-center gap-4">
-        <StarRating value={l.veredicto} color="var(--color-plum)" />
+        <StarRating value={l.veredicto} color="var(--color-ink)" />
         <span class="font-mono-label text-[0.7rem] uppercase tracking-wide text-ink-soft">
           {l.paginas} p. · {l.editorial}
         </span>
       </div>
 
-      <dl class="mt-9 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-7 font-mono-label text-[0.7rem] uppercase tracking-wide">
+      <dl class="mt-9 flex flex-wrap gap-x-10 gap-y-4 border-t border-dashed border-line pt-7 font-mono-label text-[0.7rem] uppercase tracking-wide">
         <div>
           <dt class="text-ink-soft">Género</dt>
-          <dd class="mt-1 normal-case font-body text-sm text-ink">{l.genero}</dd>
+          <dd class="mt-1 normal-case font-display font-bold text-sm">{l.genero}</dd>
         </div>
         <div>
           <dt class="text-ink-soft">Subgénero</dt>
-          <dd class="mt-1 normal-case font-body text-sm text-ink">{l.subgenero}</dd>
+          <dd class="mt-1 normal-case font-display font-bold text-sm">{l.subgenero}</dd>
         </div>
         <div>
           <dt class="text-ink-soft">Reunión</dt>
-          <dd class="mt-1 normal-case font-body text-sm text-ink">{l.lugar}</dd>
+          <dd class="mt-1 normal-case font-display font-bold text-sm">{l.lugar}</dd>
         </div>
       </dl>
     </div>
 
     <div class="reveal" data-reveal-delay="120">
-      <BookCover titulo={l.titulo} autora={l.autora} color={l.color} slug={l.slug} class="w-full max-w-sm mx-auto shadow-[0_30px_60px_-25px_rgba(21,19,15,0.35)]" />
+      <BookCover titulo={l.titulo} autora={l.autora} color={l.color} slug={l.slug} class="w-full max-w-sm mx-auto" />
     </div>
   </div>
 </section>
