@@ -2,7 +2,7 @@
 
 @theme {
   --font-display: 'Fraunces', ui-serif, Georgia, serif;
-  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Archivo', ui-sans-serif, system-ui, sans-serif;
   --font-mono-label: 'Space Mono', ui-monospace, monospace;
 
   /* Base editorial: papel + tinta, con un solo acento (ciruela) que
