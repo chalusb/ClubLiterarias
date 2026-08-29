@@ -1,5 +1,6 @@
 ---
 import { club } from '../data/lecturas';
+import DashedRule from './DashedRule.astro';
 
 const links = [
   { href: '#lectura-del-mes', label: 'Lectura del mes' },
@@ -41,15 +42,17 @@ const links = [
     </div>
   </div>
 
-  <nav class="hidden md:flex items-center justify-center gap-8 h-14 border-y-2 border-dashed border-ink font-display text-xl font-bold uppercase tracking-[-0.03em]">
+  <DashedRule class="hidden md:block" />
+  <nav class="hidden md:flex items-center justify-center gap-8 h-14 font-display text-xl font-bold uppercase tracking-[-0.03em]">
     {links.map((link) => (
       <a href={link.href} class="link-underline hover:opacity-70 transition-opacity duration-150 ease-out">
         {link.label}
       </a>
     ))}
   </nav>
+  <DashedRule />
 
-  <div id="mobile-menu" class="mobile-menu md:hidden grid border-t border-line bg-paper">
+  <div id="mobile-menu" class="mobile-menu md:hidden grid bg-paper">
     <nav class="overflow-hidden flex flex-col px-5 py-1 font-display font-bold uppercase text-sm tracking-[-0.02em]">
       {links.map((link) => (
         <a href={link.href} class="py-3 border-b border-line last:border-0">

@@ -1,4 +1,5 @@
 ---
+import DashedRule from './DashedRule.astro';
 import { club } from '../data/lecturas';
 const year = new Date().getFullYear();
 
@@ -10,7 +11,7 @@ const links = [
 ];
 ---
 
-<footer class="bg-ink border-t border-paper/15 pt-16 pb-8">
+<footer class="bg-ink pt-16 pb-8">
   <div class="mx-auto max-w-6xl px-5 sm:px-8 grid sm:grid-cols-[1.2fr_1fr_1fr] gap-10 sm:gap-6">
     <div>
       <p class="font-display headline text-2xl text-paper">LITERARIAS</p>
@@ -49,7 +50,10 @@ const links = [
     </div>
   </div>
 
-  <div class="mx-auto max-w-6xl px-5 sm:px-8 mt-14 pt-6 border-t-2 border-dashed border-paper/40 flex flex-col sm:flex-row items-center justify-between gap-3">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 mt-14">
+    <DashedRule color="rgba(255,255,255,0.4)" />
+  </div>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 mt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
     <p class="font-mono-label text-[0.65rem] uppercase tracking-wider text-paper/40">
       {club.ciudad} · © {year}
     </p>

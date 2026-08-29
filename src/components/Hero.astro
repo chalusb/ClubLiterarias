@@ -2,6 +2,7 @@
 import BookCover from './BookCover.astro';
 import StarRating from './StarRating.astro';
 import Globe from './Globe.astro';
+import DashedRule from './DashedRule.astro';
 import { lecturaDelMes } from '../data/lecturas';
 
 const l = lecturaDelMes;
@@ -50,7 +51,8 @@ const bookJsonLd = {
         </span>
       </div>
 
-      <dl class="mt-9 flex flex-wrap gap-x-10 gap-y-4 border-t-2 border-dashed border-ink pt-7 font-mono-label text-[0.7rem] uppercase tracking-wide">
+      <DashedRule class="mt-9" />
+      <dl class="mt-7 flex flex-wrap gap-x-10 gap-y-4 font-mono-label text-[0.7rem] uppercase tracking-wide">
         <div>
           <dt class="text-ink-soft">Género</dt>
           <dd class="mt-1 normal-case font-display font-bold text-sm">{l.genero}</dd>
