@@ -29,7 +29,7 @@ const bookJsonLd = {
 
 <script type="application/ld+json" set:html={JSON.stringify(bookJsonLd)} is:inline />
 
-<section id="lectura-del-mes" class="pt-14 pb-20 sm:pt-20 sm:pb-28">
+<section id="lectura-del-mes" class="pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-x-hidden">
   <div class="mx-auto max-w-6xl px-5 sm:px-8 grid md:grid-cols-[1.05fr_0.95fr] gap-12 md:gap-20 items-center">
     <div class="reveal">
       <p class="font-display font-bold uppercase text-sm tracking-[-0.02em]">
@@ -67,7 +67,7 @@ const bookJsonLd = {
     </div>
 
     <div class="reveal relative flex items-center justify-center" data-reveal-delay="120">
-      <Globe class="absolute w-[130%] max-w-none aspect-square" />
+      <Globe class="absolute w-[110%] sm:w-[130%] max-w-none aspect-square" />
       <BookCover titulo={l.titulo} autora={l.autora} color={l.color} slug={l.slug} class="relative w-full max-w-sm shadow-[0_30px_60px_-20px_rgba(0,0,0,0.35)]" />
     </div>
   </div>
