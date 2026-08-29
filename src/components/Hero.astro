@@ -1,6 +1,7 @@
 ---
 import BookCover from './BookCover.astro';
 import StarRating from './StarRating.astro';
+import Globe from './Globe.astro';
 import { lecturaDelMes } from '../data/lecturas';
 
 const l = lecturaDelMes;
@@ -35,7 +36,7 @@ const bookJsonLd = {
         Lectura del mes · {l.mes} {l.anio}
       </p>
 
-      <h1 class="mt-5 font-display headline text-4xl sm:text-6xl text-balance">
+      <h1 class="mt-5 font-display headline text-[32px] sm:text-[40px] text-balance">
         {l.titulo}
       </h1>
       <p class="mt-4 font-display font-bold text-xl sm:text-2xl">{l.autora}</p>
@@ -65,8 +66,9 @@ const bookJsonLd = {
       </dl>
     </div>
 
-    <div class="reveal" data-reveal-delay="120">
-      <BookCover titulo={l.titulo} autora={l.autora} color={l.color} slug={l.slug} class="w-full max-w-sm mx-auto" />
+    <div class="reveal relative flex items-center justify-center" data-reveal-delay="120">
+      <Globe class="absolute w-[130%] max-w-none aspect-square" />
+      <BookCover titulo={l.titulo} autora={l.autora} color={l.color} slug={l.slug} class="relative w-full max-w-sm shadow-[0_30px_60px_-20px_rgba(0,0,0,0.35)]" />
     </div>
   </div>
 </section>
