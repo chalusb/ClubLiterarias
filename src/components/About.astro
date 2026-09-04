@@ -1,0 +1,46 @@
+---
+import DashedRule from './DashedRule.astro';
+import { club, generos } from '../data/lecturas';
+---
+
+<DashedRule />
+<section id="nosotras" class="py-20 sm:py-28">
+  <h2 class="reveal font-display headline text-4xl sm:text-5xl text-center text-balance">
+    Así empezamos, en {club.fundacion}
+  </h2>
+  <p class="reveal mt-4 max-w-md mx-auto text-center text-ink-soft text-sm leading-relaxed" data-reveal-delay="60">
+    {club.descripcion}
+  </p>
+
+  <div class="mt-16 grid sm:grid-cols-3 gap-12 sm:gap-8 max-w-4xl mx-auto px-5 sm:px-8">
+    <div class="reveal text-center" data-reveal-delay="0">
+      <p class="font-mono-label text-[0.7rem] uppercase tracking-wide text-ink-soft">Cómo hemos crecido</p>
+      <div class="mt-5 flex items-end justify-center gap-3">
+        <span class="font-display headline text-4xl" data-counter={club.integrantesIniciales}>0</span>
+        <span class="pb-1 text-sm text-ink-soft">→</span>
+        <span class="font-display headline text-4xl" data-counter={club.integrantes}>0</span>
+      </div>
+      <p class="mt-2 font-mono-label text-[0.65rem] uppercase tracking-wide text-ink-soft">Integrantes</p>
+    </div>
+
+    <div class="reveal text-center" data-reveal-delay="80">
+      <p class="font-mono-label text-[0.7rem] uppercase tracking-wide text-ink-soft">Hasta la fecha</p>
+      <p class="mt-5 font-display headline text-4xl" data-counter={club.librosLeidos}>0</p>
+      <p class="mt-2 font-mono-label text-[0.65rem] uppercase tracking-wide text-ink-soft">Libros leídos</p>
+    </div>
+
+    <div class="reveal text-center" data-reveal-delay="160">
+      <p class="font-mono-label text-[0.7rem] uppercase tracking-wide text-ink-soft">Leemos desde</p>
+      <p class="mt-5 font-display headline text-2xl text-balance">{club.ciudad}</p>
+      <p class="mt-2 font-mono-label text-[0.65rem] uppercase tracking-wide text-ink-soft">México</p>
+    </div>
+  </div>
+
+  <div class="reveal mt-16 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-5" data-reveal-delay="220">
+    {generos.map((g, i) => (
+      <span class="font-display font-bold uppercase text-sm tracking-[-0.02em]">
+        {g}{i < generos.length - 1 && <span class="ml-3 text-ink-soft">·</span>}
+      </span>
+    ))}
+  </div>
+</section>

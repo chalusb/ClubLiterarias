@@ -1,0 +1,49 @@
+---
+// Portada real en public/covers/{slug}.jpg. Si no existe, cae a una
+// ficha tipográfica limpia (sin ilustración) — consistente con el
+// tratamiento fotográfico y minimalista del resto del sitio.
+import type { Color } from '../data/lecturas';
+
+interface Props {
+  titulo: string;
+  autora: string;
+  color: Color;
+  slug?: string;
+  class?: string;
+}
+
+const { titulo, autora, color, slug, class: className = '' } = Astro.props;
+
+const bg: Record<Color, string> = {
+  plum: 'var(--color-plum)',
+  orange: 'var(--color-orange)',
+  olive: 'var(--color-olive)',
+  teal: 'var(--color-teal)',
+  navy: 'var(--color-navy)',
+  coral: 'var(--color-coral)',
+};
+---
+
+<div class:list={['relative aspect-[3/4.4] overflow-hidden bg-paper-deep', className]}>
+  {slug && (
+    <img
+      src={`/covers/${slug}.jpg`}
+      alt={`Portada de ${titulo}, de ${autora}`}
+      loading="lazy"
+      decoding="async"
+      class="absolute inset-0 w-full h-full object-cover"
+      onerror="this.remove()"
+    />
+  )}
+  <div
+    class="absolute inset-0 flex flex-col justify-end p-4"
+    style={!slug ? { backgroundColor: bg[color] } : undefined}
+  >
+    {!slug && (
+      <>
+        <span class="font-body text-[0.65rem] uppercase tracking-widest text-paper/80">{autora}</span>
+        <p class="mt-1 font-display text-paper text-lg leading-[1.05] text-balance">{titulo}</p>
+      </>
+    )}
+  </div>
+</div>

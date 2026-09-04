@@ -1,0 +1,85 @@
+---
+import { club } from '../data/lecturas';
+import DashedRule from './DashedRule.astro';
+import Logo from './Logo.astro';
+
+const links = [
+  { href: '#lectura-del-mes', label: 'Lectura del mes' },
+  { href: '#biblioteca', label: 'Nuestra biblioteca' },
+  { href: '#nosotras', label: 'Nosotras' },
+  { href: '#unete', label: 'Únete' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-paper">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 py-5 sm:py-6 grid grid-cols-[1fr_auto_1fr] items-center">
+    <span></span>
+    <a href="#top" class="justify-self-center">
+      <Logo class="w-[160px] h-[45.4px] sm:w-[200px] sm:h-[56.8px]" />
+    </a>
+
+    <div class="justify-self-end flex items-center">
+      <a
+        href={club.instagram}
+        target="_blank"
+        rel="noreferrer"
+        class="hidden md:inline font-display font-bold uppercase text-sm tracking-[-0.02em] link-underline"
+      >
+        Síguenos
+      </a>
+
+      <button
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Abrir menú"
+        class="md:hidden shrink-0 w-9 h-9 flex flex-col items-center justify-center gap-1.5"
+      >
+        <span class="menu-bar block w-5 h-[1.5px] bg-ink transition-transform duration-200 ease-out"></span>
+        <span class="menu-bar-2 block w-5 h-[1.5px] bg-ink transition-opacity duration-150 ease-out"></span>
+        <span class="menu-bar block w-5 h-[1.5px] bg-ink transition-transform duration-200 ease-out"></span>
+      </button>
+    </div>
+  </div>
+
+  <DashedRule class="hidden md:block" />
+  <nav class="hidden md:flex items-center justify-center gap-8 h-14 font-display text-xl font-bold uppercase tracking-[-0.03em]">
+    {links.map((link) => (
+      <a href={link.href} class="link-underline hover:opacity-70 transition-opacity duration-150 ease-out">
+        {link.label}
+      </a>
+    ))}
+  </nav>
+  <DashedRule />
+
+  <div id="mobile-menu" class="mobile-menu md:hidden grid bg-paper">
+    <nav class="overflow-hidden flex flex-col px-5 py-1 font-display font-bold uppercase text-sm tracking-[-0.02em]">
+      {links.map((link) => (
+        <a href={link.href} class="py-3 border-b border-line last:border-0">
+          {link.label}
+        </a>
+      ))}
+      <a href={club.instagram} target="_blank" rel="noreferrer" class="py-3">
+        Síguenos en Instagram
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    menu.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      })
+    );
+  }
+</script>

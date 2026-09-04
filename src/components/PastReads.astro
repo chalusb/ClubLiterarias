@@ -1,0 +1,29 @@
+---
+import BookCover from './BookCover.astro';
+import DashedRule from './DashedRule.astro';
+import { lecturasAnteriores } from '../data/lecturas';
+---
+
+<DashedRule />
+<section id="archivo" class="py-20 sm:py-28">
+  <h2 class="reveal font-display headline text-4xl sm:text-5xl text-center text-balance">
+    Lecturas anteriores
+  </h2>
+  <p class="reveal mt-4 text-center text-ink-soft text-sm max-w-sm mx-auto" data-reveal-delay="60">
+    Desliza para ver los libros que nos han hecho reunirnos, desde nuestro primer mes hasta hoy.
+  </p>
+
+  <div class="mt-14 -mx-5 sm:mx-0 px-5 sm:px-8 flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 [scrollbar-width:thin]">
+    {lecturasAnteriores.map((l, i) => (
+      <article class="reveal flex flex-col items-center snap-start shrink-0 w-40 sm:w-48" data-reveal-delay={Math.min(i * 50, 250)}>
+        <BookCover titulo={l.titulo} autora={l.autora} color={l.color} slug={l.slug} class="w-full" />
+        <p class="mt-4 font-display font-bold text-sm text-center">
+          {l.mes} {l.anio}
+        </p>
+        <h3 class="mt-1 font-display font-bold text-xs text-center leading-snug text-balance text-ink-soft">
+          {l.titulo}
+        </h3>
+      </article>
+    ))}
+  </div>
+</section>

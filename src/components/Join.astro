@@ -1,0 +1,26 @@
+---
+import DashedRule from './DashedRule.astro';
+import { club } from '../data/lecturas';
+---
+
+<DashedRule />
+<section id="unete" class="py-20 sm:py-28 bg-ink">
+  <div class="reveal mx-auto max-w-2xl px-5 sm:px-8 text-center">
+    <h2 class="font-display headline text-4xl sm:text-5xl text-paper text-balance">
+      ¿Nos acompañas con la próxima lectura?
+    </h2>
+    <p class="mt-6 text-paper/70 leading-relaxed max-w-md mx-auto">
+      Cada mes elegimos un libro, nos reunimos a discutirlo y lo documentamos con
+      cariño en el Instagram del club. Síguenos para no perderte la próxima ronda.
+    </p>
+
+    <a
+      href={club.instagram}
+      target="_blank"
+      rel="noreferrer"
+      class="mt-9 inline-flex items-center gap-2 border border-paper text-paper font-display font-bold uppercase text-sm tracking-[-0.02em] px-8 py-4 transition-colors duration-150 ease-out hover:bg-paper hover:text-ink"
+    >
+      Síguenos en Instagram
+    </a>
+  </div>
+</section>

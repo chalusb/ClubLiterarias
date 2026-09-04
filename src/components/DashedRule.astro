@@ -1,0 +1,22 @@
+---
+// Línea punteada dibujada con gradiente repetido en vez de border-style:
+// dashed, para que el largo/grosor de cada guion sea idéntico en
+// cualquier navegador (border-dashed nativo varía mucho entre motores
+// y se ve como puntitos en varios celulares).
+interface Props {
+  color?: string;
+  thickness?: number;
+  class?: string;
+}
+
+const { color = 'var(--color-ink)', thickness = 3, class: className = '' } = Astro.props;
+const dash = 18;
+const gap = 12;
+---
+
+<div
+  class:list={['w-full shrink-0', className]}
+  style={`height:${thickness}px; background-image: repeating-linear-gradient(to right, ${color} 0, ${color} ${dash}px, transparent ${dash}px, transparent ${dash + gap}px); background-repeat: repeat-x;`}
+  aria-hidden="true"
+>
+</div>

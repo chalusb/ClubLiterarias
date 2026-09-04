@@ -1,0 +1,22 @@
+---
+// Esfera de líneas (globo terráqueo estilizado) como fondo decorativo,
+// igual que el motivo detrás de la foto de Dua en su "Monthly Read".
+interface Props {
+  class?: string;
+  color?: string;
+}
+
+const { class: className = '', color = '#8fae9c' } = Astro.props;
+---
+
+<svg viewBox="0 0 400 400" class:list={['pointer-events-none', className]} aria-hidden="true">
+  <g fill="none" stroke={color} stroke-width="1">
+    <circle cx="200" cy="200" r="180" />
+    <ellipse cx="200" cy="200" rx="180" ry="60" />
+    <ellipse cx="200" cy="200" rx="180" ry="120" />
+    <ellipse cx="200" cy="200" rx="60" ry="180" />
+    <ellipse cx="200" cy="200" rx="120" ry="180" />
+    <line x1="20" y1="200" x2="380" y2="200" />
+    <line x1="200" y1="20" x2="200" y2="380" />
+  </g>
+</svg>
