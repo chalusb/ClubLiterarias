@@ -1,6 +1,7 @@
 ---
 import { club } from '../data/lecturas';
 import DashedRule from './DashedRule.astro';
+import Logo from './Logo.astro';
 
 const links = [
   { href: '#lectura-del-mes', label: 'Lectura del mes' },
@@ -13,8 +14,8 @@ const links = [
 <header class="sticky top-0 z-50 bg-paper">
   <div class="mx-auto max-w-6xl px-5 sm:px-8 h-16 grid grid-cols-[1fr_auto_1fr] items-center">
     <span></span>
-    <a href="#top" class="justify-self-center font-display headline text-xl sm:text-2xl">
-      LITERARIAS
+    <a href="#top" class="justify-self-center">
+      <Logo class="h-6 sm:h-7" />
     </a>
 
     <div class="justify-self-end flex items-center">

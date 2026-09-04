@@ -1,5 +1,6 @@
 ---
 import DashedRule from './DashedRule.astro';
+import Logo from './Logo.astro';
 import { club } from '../data/lecturas';
 const year = new Date().getFullYear();
 
@@ -14,7 +15,7 @@ const links = [
 <footer class="bg-ink pt-16 pb-8">
   <div class="mx-auto max-w-6xl px-5 sm:px-8 grid sm:grid-cols-[1.2fr_1fr_1fr] gap-10 sm:gap-6">
     <div>
-      <p class="font-display headline text-2xl text-paper">LITERARIAS</p>
+      <Logo variant="light" class="h-7" />
       <p class="mt-4 max-w-xs text-sm text-paper/60 leading-relaxed">
         Club de lectura fundado en {club.fundacion} en {club.ciudad}, México.
       </p>

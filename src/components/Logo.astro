@@ -1,0 +1,20 @@
+---
+// Wordmark oficial (archivo editable que mandó el cliente), recortado
+// a su bounding box real. Es negro puro, así que para la variante
+// "light" (fondos oscuros) se invierte con un filtro CSS en vez de
+// necesitar un segundo archivo.
+interface Props {
+  class?: string;
+  variant?: 'dark' | 'light';
+}
+
+const { class: className = '', variant = 'dark' } = Astro.props;
+---
+
+<img
+  src="/logo/literarias-wordmark.svg"
+  width="493"
+  height="140"
+  alt="Literarias"
+  class:list={['w-auto select-none', variant === 'light' && 'invert', className]}
+/>
