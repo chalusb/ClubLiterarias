@@ -6,13 +6,14 @@ import { biblioteca } from '../data/biblioteca';
   <h2 class="reveal font-display headline text-4xl sm:text-5xl text-center text-balance">
     Nuestra biblioteca
   </h2>
-  <p class="reveal mt-4 max-w-md mx-auto text-center text-ink-soft text-sm leading-relaxed" data-reveal-delay="60">
-    Más libros que han pasado por el club, fuera de la lectura oficial del mes.
-  </p>
 
   <div class="mt-14 mx-auto max-w-6xl px-5 sm:px-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-10">
     {biblioteca.map((libro, i) => (
-      <div class="reveal" data-reveal-delay={Math.min((i % 12) * 30, 250)}>
+      <div
+        class="reveal book-in"
+        style={`--slide-x: ${i % 2 === 0 ? '-46px' : '46px'}; --slide-rot: ${i % 2 === 0 ? '-6deg' : '6deg'}`}
+        data-reveal-delay={Math.min((i % 12) * 30, 250)}
+      >
         <img
           src={`/biblioteca/${libro.slug}.jpg`}
           alt={`Portada de ${libro.titulo}, de ${libro.autor}`}

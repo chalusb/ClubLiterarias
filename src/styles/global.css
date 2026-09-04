@@ -92,6 +92,27 @@
     }
   }
 
+  /* Portadas de "Nuestra biblioteca": entran deslizándose desde un
+     costado alternado (izquierda/derecha, según --slide-x/--slide-rot
+     puestos inline por libro) con un pequeño rebote al asentarse —
+     distinto del fade-up genérico de .reveal usado en el resto del sitio. */
+  .book-in {
+    transform: translateX(var(--slide-x, -40px)) rotate(var(--slide-rot, -4deg)) scale(0.92);
+    transition:
+      opacity 0.55s var(--ease-out-strong),
+      transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .book-in.is-visible {
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .book-in {
+      transform: none;
+      transition: opacity 0.4s ease;
+    }
+  }
+
   /* Menú móvil: acordeón por grid-template-rows (sin medir alto por JS). */
   .mobile-menu {
     grid-template-rows: 0fr;
