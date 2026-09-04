@@ -8,8 +8,8 @@
   --font-body: 'Archivo', ui-sans-serif, system-ui, sans-serif;
   --font-mono-label: 'Space Mono', ui-monospace, monospace;
 
-  --color-paper: #ffffff;
-  --color-paper-deep: #f9f9f9;
+  --color-paper: #f5ecdb;
+  --color-paper-deep: #ebdec2;
   --color-ink: #000000;
   --color-ink-soft: rgba(0, 0, 0, 0.55);
   --color-line: rgba(0, 0, 0, 0.15);
