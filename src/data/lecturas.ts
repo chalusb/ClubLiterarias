@@ -27,6 +27,24 @@ export interface Lectura {
 
 export const lecturas: Lectura[] = [
   {
+    slug: 'septiembre-2026',
+    mes: 'Septiembre',
+    numero: '09',
+    anio: 2026,
+    titulo: 'Cartucho',
+    autora: 'Nellie Campobello',
+    paginas: 171,
+    genero: 'Ficción',
+    subgenero: 'Relatos de la Revolución mexicana',
+    editorial: 'ERA',
+    sinopsis:
+      'Relatos breves y fragmentarios narrados desde la mirada de una niña que crece entre balas, hombres armados y velorios, en el Chihuahua de la Revolución mexicana. Uno de los primeros grandes libros sobre la Revolución escrito por una mujer.',
+    veredicto: 0,
+    lugar: 'Por confirmar',
+    color: 'coral',
+    destacado: true,
+  },
+  {
     slug: 'agosto-2026',
     mes: 'Agosto',
     numero: '08',
@@ -42,7 +60,6 @@ export const lecturas: Lectura[] = [
     veredicto: 5,
     lugar: 'Por confirmar',
     color: 'plum',
-    destacado: true,
   },
   {
     slug: 'julio-2026',
