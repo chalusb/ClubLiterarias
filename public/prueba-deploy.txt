@@ -1,0 +1,1 @@
+Deploy OK - prueba de enlace desde el repo local (2026-10-10)
